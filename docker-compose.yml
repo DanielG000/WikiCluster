@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  backend:
+    build: ./back-flask
+    volumes:
+      - ./back-flask:/app
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    links:
+      - mongodb
+  
+  mongodb:
+    image: mongo
+    ports:
+      - ${DB_PORT}:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+      MONGO_INITDB_DATABASE: ${DB_DATABASE}
+    volumes:
+      - ./db:/data/db
