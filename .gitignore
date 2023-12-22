@@ -1,5 +1,4 @@
 db/
-clean_pycache.sh
 __pycache__/
 .env
 .gitignore
