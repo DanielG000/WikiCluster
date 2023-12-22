@@ -252,7 +252,7 @@ class ModeloAnimes:
 
     
     #Funcion para establecer o crear referencias a la colección Manga
-    def check_manga(self, titulo, episodioId, nombreEpisodio):
+    def check_manga(self, titulo, animeId, tituloAnime):
 
         manga = self.existe_manga(titulo)
 
@@ -323,7 +323,7 @@ class ModeloAnimes:
                 self.__mongo.db.Animes.update_one({'_id': ObjectId(id)},{'$set': {
                 'lista_episodios':listaEpisodios
                 }} )
-                nuevo_anime['lista_episodios'] = listaEpisodios
+
             listaGeneros = []
             if len(genero) >= 1:
                 listaGeneros = self.check_generos(genero, animeId=id, tituloAnime=titulo)
@@ -336,9 +336,10 @@ class ModeloAnimes:
                 self.__mongo.db.Animes.update_one({'_id': ObjectId(id)},{'$set': {
                 'personajes':listaPersonajes
                 }} )
-            productorId = self.check_productor(productor)
+            productorId = self.check_productor(productor, animeId=id, tituloAnime=titulo)
             self.__mongo.db.Animes.update_one({'_id': ObjectId(id)},{'$set': {'productor':productorId}} )
-            mangaId = self.check_manga(manga)
+
+            mangaId = self.check_manga(manga, id, titulo)
             self.__mongo.db.Animes.update_one({'_id': ObjectId(id)},{'$set': {'manga':mangaId}} )
 
             
