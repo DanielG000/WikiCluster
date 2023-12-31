@@ -1,6 +1,6 @@
 # WikiCluster
 
-Api sobre Anime
+API-REST de base de datos NoSQL sobre Anime.
 
 
 ## Ejecución
