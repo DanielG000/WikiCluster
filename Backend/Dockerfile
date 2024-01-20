@@ -1,7 +1,7 @@
 FROM python:3.11
 
 #
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=0
 
 #Crea la carpeta dentro del contenedor
 RUN mkdir -p /app

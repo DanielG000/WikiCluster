@@ -1,9 +1,9 @@
 version: "3.9"
 services:
   backend:
-    build: ./back-flask
+    build: ./Backend
     volumes:
-      - ./back-flask:/app
+      - ./Backend:/app
     ports:
       - ${BACKEND_PORT}:${BACKEND_PORT}
     links:
